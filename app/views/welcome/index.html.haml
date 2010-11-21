@@ -1,1 +1,6 @@
 %p Welcome!
+
+- if Admin.first_time
+  = link_to "First time login", edit_admin_password_path(:reset_password_token => Admin.first.reset_password_token)
+- if Admin.first_login
+  = link_to "Set your email address", edit_admin_registration_path

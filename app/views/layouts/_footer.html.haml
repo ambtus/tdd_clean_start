@@ -1,2 +1,5 @@
 #footer
-  = link_to "Admin login"
+  - unless admin_signed_in?
+    = link_to "Admin login", new_admin_session_path
+  - if admin_signed_in?
+    = link_to "Manage account", edit_admin_registration_path

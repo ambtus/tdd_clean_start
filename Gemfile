@@ -9,6 +9,9 @@ gem 'haml'
 gem 'mongoid', '2.0.0.beta.20'
 gem 'bson_ext' # mongo c extensions
 
+# authentication
+gem 'devise'
+
 # development gems
 group :development do
   # enable debugging with "rails server -u" or "rails server --debugger"
