@@ -1,0 +1,7 @@
+= form_for @identity do |f|
+  - @identity.errors.full_messages.each do |e|
+    = e
+  = hidden_field_tag :person_id, @person.id
+  = f.label :name
+  = f.text_field :name
+  = f.submit "Submit"

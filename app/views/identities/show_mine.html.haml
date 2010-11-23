@@ -1,0 +1,8 @@
+- if @identities.empty?
+  You have no identities
+- else
+  Your identities
+%ul
+  - @identities.each do |identity|
+    %li= link_to identity.name, identity
+= link_to "Add an identity", new_person_identities_path(current_person)

@@ -7,6 +7,7 @@ class Admin
   validates_presence_of   :email
   validates_uniqueness_of :email, :case_sensitive => false
 
+  field :activated
 
   def self.first_time
     return true if Admin.count == 1 && Admin.first.reset_password_token

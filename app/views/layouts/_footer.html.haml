@@ -2,7 +2,7 @@
   - if person_signed_in?
     = link_to "Manage account", edit_person_registration_path
     = link_to "Sign out", destroy_person_session_path
-    = link_to "Manage pseuds"
+    = link_to "Manage identities", person_identities_path(current_person)
   - elsif admin_signed_in?
     = link_to "Manage account", edit_admin_registration_path
     = link_to "Sign out", destroy_admin_session_path

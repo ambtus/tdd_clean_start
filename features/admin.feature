@@ -21,3 +21,5 @@ Feature: Admins can log in and manage users
     And I fill in "Current password" with "secret"
     And I press "Update"
     Then I should see "You updated your account successfully."
+
+  Scenario: manage a user

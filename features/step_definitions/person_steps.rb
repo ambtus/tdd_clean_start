@@ -1,3 +1,9 @@
+Given /^I am logged out$/ do
+  visit destroy_person_session_path
+end
+
+
+
 Given /^I am logged in$/ do
   email = 'someone@example.com'
   password = 'secret'
