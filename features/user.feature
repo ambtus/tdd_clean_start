@@ -35,5 +35,7 @@ Feature: Users can sign up, log in, manage identities, read restricted works, an
     Then I should not see "You have no identities"
       And I should see "Your identities"
       And I should see "Nom de Plume"
-    When I am logged out
-    Then I should not see "Manage identities"
+
+    Scenario: logged out users have no identities
+      When I am logged out
+      Then I should not see "Manage identities"
