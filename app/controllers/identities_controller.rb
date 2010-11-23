@@ -1,58 +1,33 @@
 class IdentitiesController < ApplicationController
-  before_filter :authenticate_person!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     @identities = Identity.all
   end
 
   def show
-    if params[:person_id]
-      @person = Person.find(params[:person_id])
-      if @person
-        if @person == current_person
-          @identities = @person.identities
-          render :show_mine
-        elsif current_person
-          redirect_to person_identities_path(current_person), :alert => "Sorry, you can only manage your own identities"
-        else
-          redirect_to new_person_session_path, :notice => "Please log in to manage your identities"
-        end
-      end
-    else
-      @identity = Identity.find(params[:id])
-    end
+    @identity = Identity.find(params[:id])
   end
 
   def new
-    @person = Person.find(params[:person_id])
-    if @person
-      if @person == current_person
-        @identity = Identity.new
-      elsif current_person
-        redirect_to person_identities_path(current_person), :alert => "Sorry, you can only manage your own identities"
-      end
-    else
-     redirect_to root_path, :notice => "You can only add an identity to a person"
-    end
+    @identity = Identity.new
   end
 
   def create
-    @person = Person.find(params[:person_id])
-    if @person
-      if @person == current_person
-        @identity = Identity.create(params[:identity])
-        if @identity.errors.blank?
-          @person.identities << @identity
-          redirect_to person_identities_path(@person), :notice => "Identity successfully created"
-        else
-          render :new
-        end
-      elsif current_person
-        redirect_to person_identities_path(current_person), :alert => "Sorry, you can only manage your own identities"
-      end
+    @identity = Identity.create(params[:identity])
+    if @identity.errors.blank?
+       current_user.identities << @identity
+       redirect_to edit_identities_path, :notice => "Identity successfully created"
     else
-      redirect_to root_path, :notice => "You can only add an identity to a person"
+      render :new
     end
+  end
+
+  def edit
+    @identities = current_user.identities
+  end
+
+  def update
   end
 
 end

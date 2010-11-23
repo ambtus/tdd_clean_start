@@ -1,0 +1,6 @@
+= form_for @work do |f|
+  - @work.errors.full_messages.each do |e|
+    = e
+  = f.label :title
+  = f.text_field :title
+  = f.submit "Submit"

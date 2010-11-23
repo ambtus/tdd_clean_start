@@ -1,0 +1,8 @@
+- if @works.empty?
+  You have no works
+- else
+  Your works
+%ul
+  - @works.each do |work|
+    %li= link_to work.title, work
+= link_to "Add a new work", new_works_path

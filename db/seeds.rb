@@ -7,4 +7,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 Admin.create(:email => 'admin@example.com')
-Admin.first.send_reset_password_instructions
+a = Admin.first
+a.send_reset_password_instructions
+a.confirmed_at = Time.now
+a.save!
