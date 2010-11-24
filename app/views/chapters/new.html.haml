@@ -1,0 +1,16 @@
+= form_for @work do |w|
+  - @work.errors.full_messages.each do |e|
+    = e
+  #chapters
+    = w.fields_for :chapters do |c|
+      #chapter
+        = c.label :chapter_name
+        = c.text_field :chapter_name
+        %br
+        = c.label :content
+        %br
+        = c.text_area :content
+  #work
+    = w.label :complete
+    = w.check_box :complete
+  = w.submit "Submit"

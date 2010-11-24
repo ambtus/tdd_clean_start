@@ -4,6 +4,9 @@
   #work
     = w.label :title
     = w.text_field :title
+    %br
+    = w.label :chaptered
+    = w.check_box :chaptered
   #chapter
     = w.fields_for :chapters do |c|
       = c.label :content

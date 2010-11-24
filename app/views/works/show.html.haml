@@ -5,3 +5,5 @@
     = link_to @work.identity.name, @work.identity
 #chapter
   = @work.chapters.first.content
+- if @work.chaptered
+  = link_to "Next chapter", work_chapter_path(@work, 2)

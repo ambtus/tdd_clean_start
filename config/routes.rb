@@ -68,14 +68,6 @@ TddCleanStart::Application.routes.draw do
   # works_path POST /works {:action=>"create", :controller=>"works"}
   # new_works_path GET /works/new {:action=>"new", :controller=>"works"}
 
-  # routes for reading a work:
-  resources :works, :only => [:show] do
-    resources :chapters, :only => [:index, :show]
-  end
-  # work_chapters_path GET /works/:work_id/chapters {:action=>"index", :controller=>"chapters"}
-  # work_chapter_path GET /works/:work_id/chapters/:id {:action=>"show", :controller=>"chapters"}
-  # work_path GET /works/:id {:action=>"show", :controller=>"work"}
-
   # routes for editing a work and managing its chapters
   resources :works, :only => [:edit, :update] do
     resources :chapters, :only => [:new, :create, :edit, :update, :destroy]
@@ -87,5 +79,13 @@ TddCleanStart::Application.routes.draw do
   # work_chapter_path DELETE /works/:work_id/chapters/:id {:action=>"destroy", :controller=>"chapters"}
   # edit_work_path GET /works/:id/edit {:action=>"edit", :controller=>"work"}
   # work_path PUT /works/:id {:action=>"update", :controller=>"work"}
+
+  # routes for reading a work:
+  resources :works, :only => [:show] do
+    resources :chapters, :only => [:index, :show]
+  end
+  # work_chapters_path GET /works/:work_id/chapters {:action=>"index", :controller=>"chapters"}
+  # work_chapter_path GET /works/:work_id/chapters/:id {:action=>"show", :controller=>"chapters"}
+  # work_path GET /works/:id {:action=>"show", :controller=>"work"}
 
 end
