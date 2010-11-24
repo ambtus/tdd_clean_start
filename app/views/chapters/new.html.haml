@@ -2,13 +2,13 @@
   - @work.errors.full_messages.each do |e|
     = e
   #work
-    = w.label :title
-    = w.text_field :title
-    %br
-    = w.label :chaptered
-    = w.check_box :chaptered
+    = w.label :complete
+    = w.check_box :complete
   #chapter
-    = w.fields_for :chapters do |c|
+    = w.fields_for :chapters, @chapter do |c|
+      = c.label :chapter_name
+      = c.text_field :chapter_name
+      %br
       = c.label :content
       %br
       = c.text_area :content

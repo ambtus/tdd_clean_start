@@ -14,7 +14,8 @@ class WorksController < ApplicationController
     @work = Work.create(params[:work])
     if @work.errors.blank?
        current_user.works << @work
-       redirect_to edit_works_path, :notice => "Work successfully created"
+       flash[:notice] = "Work successfully created"
+       redirect_to (@work.chaptered? ? new_work_chapter_path(@work) : edit_works_path)
     else
       render :new
     end
@@ -30,9 +31,9 @@ class WorksController < ApplicationController
 
   def update
     work = Work.find(params[:id])
-    work.identity_id = params[:work][:identity_id]
+    work.update_attributes(params[:work])
     flash[:notice] = work.save ? "#{work.title} updated" : "Something went wrong"
-    redirect_to edit_works_path
+    redirect_to (work.complete? ? edit_works_path : new_work_chapter_path(work))
   end
 
 end
