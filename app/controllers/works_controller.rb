@@ -7,6 +7,7 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
+    @work.chapters.build
   end
 
   def create

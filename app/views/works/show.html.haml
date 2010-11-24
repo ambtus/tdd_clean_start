@@ -1,3 +1,7 @@
-= @work.title
-by
-= link_to @work.identity.name, @work.identity
+#work
+  = @work.title
+  - if @work.identity
+    by
+    = link_to @work.identity.name, @work.identity
+#chapter
+  = @work.chapters.first.content
