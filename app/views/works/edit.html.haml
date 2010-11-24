@@ -1,8 +1,11 @@
-- if @works.empty?
-  You have no works
-- else
-  Your works
+%h1 Your works
 %ul
   - @works.each do |work|
-    %li= link_to work.title, work
+    %li
+      = form_for work, :method => :put  do |f|
+        = link_to work.title, work
+        = f.label :identity_id, "by"
+        = f.collection_select :identity_id, @identities, :id, :name, :include_blank => true
+        = submit_tag "Submit"
+    %br
 = link_to "Add a new work", new_works_path

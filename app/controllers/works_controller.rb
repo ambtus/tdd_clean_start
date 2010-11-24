@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
-  def edit
-    @works = current_user.works
+  def show
+    @work = Work.find(params[:id])
   end
 
   def new
@@ -17,6 +17,21 @@ class WorksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @identities = current_user.identities
+    @works = current_user.works
+    if @works.blank?
+      redirect_to new_works_path, :notice => "You have no works" and return
+    end
+  end
+
+  def update
+    work = Work.find(params[:id])
+    work.identity_id = params[:work][:identity_id]
+    flash[:notice] = work.save ? "#{work.title} updated" : "Something went wrong"
+    redirect_to edit_works_path
   end
 
 end

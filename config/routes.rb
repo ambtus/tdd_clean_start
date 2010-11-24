@@ -69,23 +69,23 @@ TddCleanStart::Application.routes.draw do
   # new_works_path GET /works/new {:action=>"new", :controller=>"works"}
 
   # routes for reading a work:
-  resources :work, :only => [:show] do
+  resources :works, :only => [:show] do
     resources :chapters, :only => [:index, :show]
   end
-  # work_chapters_path GET /work/:work_id/chapters {:action=>"index", :controller=>"chapters"}
-  # work_chapter_path GET /work/:work_id/chapters/:id {:action=>"show", :controller=>"chapters"}
-  # work_path GET /work/:id {:action=>"show", :controller=>"work"}
+  # work_chapters_path GET /works/:work_id/chapters {:action=>"index", :controller=>"chapters"}
+  # work_chapter_path GET /works/:work_id/chapters/:id {:action=>"show", :controller=>"chapters"}
+  # work_path GET /works/:id {:action=>"show", :controller=>"work"}
 
   # routes for editing a work and managing its chapters
-  resources :work, :only => [:edit, :update] do
+  resources :works, :only => [:edit, :update] do
     resources :chapters, :only => [:new, :create, :edit, :update, :destroy]
   end
-  # work_chapters_path POST /work/:work_id/chapters {:action=>"create", :controller=>"chapters"}
-  # new_work_chapter_path GET /work/:work_id/chapters/new {:action=>"new", :controller=>"chapters"}
-  # edit_work_chapter_path GET /work/:work_id/chapters/:id/edit {:action=>"edit", :controller=>"chapters"}
-  # work_chapter_path PUT /work/:work_id/chapters/:id {:action=>"update", :controller=>"chapters"}
-  # work_chapter_path DELETE /work/:work_id/chapters/:id {:action=>"destroy", :controller=>"chapters"}
-  # edit_work_path GET /work/:id/edit {:action=>"edit", :controller=>"work"}
-  # work_path PUT /work/:id {:action=>"update", :controller=>"work"}
+  # work_chapters_path POST /works/:work_id/chapters {:action=>"create", :controller=>"chapters"}
+  # new_work_chapter_path GET /works/:work_id/chapters/new {:action=>"new", :controller=>"chapters"}
+  # edit_work_chapter_path GET /works/:work_id/chapters/:id/edit {:action=>"edit", :controller=>"chapters"}
+  # work_chapter_path PUT /works/:work_id/chapters/:id {:action=>"update", :controller=>"chapters"}
+  # work_chapter_path DELETE /works/:work_id/chapters/:id {:action=>"destroy", :controller=>"chapters"}
+  # edit_work_path GET /works/:id/edit {:action=>"edit", :controller=>"work"}
+  # work_path PUT /works/:id {:action=>"update", :controller=>"work"}
 
 end

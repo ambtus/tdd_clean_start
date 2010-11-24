@@ -4,6 +4,6 @@ end
 
 Given /^I have an identity "([^\"]*)"$/ do |name|
   i = Identity.create(:name => name)
-  p = Person.where(:email => 'someone@example.com').first
-  p.identities << i
+  u = User.where(:email => 'someone@example.com').first
+  u.identities << i
 end

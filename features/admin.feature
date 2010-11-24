@@ -22,4 +22,6 @@ Feature: Admins can log in and manage users
     And I press "Update"
     Then I should see "You updated your account successfully."
 
+  Scenario: manage an admin
+
   Scenario: manage a user

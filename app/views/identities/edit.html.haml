@@ -1,7 +1,4 @@
-- if @identities.empty?
-  You have no identities
-- else
-  Your identities
+%h1 Your identities
 %ul
   - @identities.each do |identity|
     %li= link_to identity.name, identity

@@ -25,6 +25,9 @@ class IdentitiesController < ApplicationController
 
   def edit
     @identities = current_user.identities
+    if @identities.blank?
+      redirect_to new_identities_path, :notice => "You have no identities" and return
+    end
   end
 
   def update

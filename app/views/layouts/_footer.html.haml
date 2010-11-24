@@ -1,13 +1,13 @@
 #footer
   - if user_signed_in?
-    = link_to "Manage account", edit_user_registration_path
-    = link_to "Sign out", destroy_user_session_path
-    = link_to "Manage identities", edit_identities_path
-    = link_to "Manage works", edit_works_path
+    = link_to_unless_current "Manage account", edit_user_registration_path
+    = link_to_unless_current "Sign out", destroy_user_session_path
+    = link_to_unless_current "Manage identities", edit_identities_path
+    = link_to_unless_current "Manage works", edit_works_path
   - elsif admin_signed_in?
-    = link_to "Manage account", edit_admin_registration_path
-    = link_to "Sign out", destroy_admin_session_path
+    = link_to_unless_current "Manage account", edit_admin_registration_path
+    = link_to_unless_current "Sign out", destroy_admin_session_path
   - else
-    = link_to "Sign in", new_user_session_path
-    = link_to "Sign up", new_user_registration_path
-    = link_to "Admin login", new_admin_session_path
+    = link_to_unless_current "Sign in", new_user_session_path
+    = link_to_unless_current "Sign up", new_user_registration_path
+    = link_to_unless_current "Admin login", new_admin_session_path

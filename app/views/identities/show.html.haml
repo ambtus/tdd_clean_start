@@ -1,1 +1,6 @@
-= @identity.name
+%h1
+  Works by
+  = @identity.name
+%ul
+  - @identity.works.each do |work|
+    %li= link_to work.title, work

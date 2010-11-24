@@ -25,7 +25,6 @@ Feature: Users can sign up, log in, manage identities, read restricted works, an
     When I am logged in
     And I follow "Manage identities"
     Then I should see "You have no identities"
-    When I follow "Add an identity"
       And I fill in "Name" with "Nom de Plume"
       And I press "Submit"
     Then I should see "Identity successfully created"
